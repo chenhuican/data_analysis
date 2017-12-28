@@ -2,6 +2,30 @@
 Python数据分析脚本，工作邮件自动化报表
 # ----- Git 常用命令速查表 ----
 
+注：
+origin 名字可以修改，比如修改成data_analysis ，master 就是本地分支名称。-u 参数是否加上要看你这个仓库是否是主仓库，
+如果加上了-u，那么之后你直接敲git push 或者 git pull 后就会用这个-u的仓库。
+如果是副仓库建议不要加
+
+使用 Git 管理文件时，每次结束工作前请依次执行git add、git commit和git push命令将文件推送到远程仓库。
+
+
+---------------------------------------------------------------
+## 情况一：
+$ git remote -v
+origin  https://github.com/chenhuican/pandas_sql.git (fetch)
+origin  https://github.com/chenhuican/pandas_sql.git (push)
+
+对于此类提交命令： git push origin master
+
+## 情况二：
+$ git remote -v
+data_analysis   https://github.com/chenhuican/data_analysis.git (fetch)
+data_analysis   https://github.com/chenhuican/data_analysis.git (push)
+
+提交命令：$ git push data_analysis master
+---------------------------------------------------------------
+
 ## 创建版本库
 
 $ git clone <url>                  #克隆远程版本库
