@@ -32,8 +32,8 @@ g_price_converter = Decimal("1.0")
 ###################################################################################
 logging.basicConfig(format='[%(asctime)s-%(lineno)d] %(levelname)s: %(message)s', level=logging.DEBUG)
 
-(db0_host,db0_port,db0_user,db0_passwd)    =("10.29.205.36", 3306, "user", "password" )
-(db1_host,db1_port,db1_user,db1_passwd)    =("10.30.2.118", 3306, "user", "password")
+(db0_host,db0_port,db0_user,db0_passwd)    =("10.29.205.36", 3306, "user1", "password" )
+(db1_host,db1_port,db1_user,db1_passwd)    =("10.30.2.118", 3306, "user1", "password")
 
 def lineno():
     # Returns the current line number in our program.
