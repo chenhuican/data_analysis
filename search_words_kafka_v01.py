@@ -61,7 +61,7 @@ def send_mail(contexts):
 
 	try:
 		smtp = smtplib.SMTP_SSL('webmail.360gst.com', 465)
-		smtp.login('techdata@360gst.com','Gstdata321')
+		smtp.login('techdata@360gst.com','xx8758ddf090HY21')
 		smtp.sendmail(sender, receiver_list, msgroot.as_string())
 		smtp.quit()
 	except Exception,e:
@@ -70,9 +70,9 @@ def send_mail(contexts):
 	
 
 def get_conn():
-	hostip = ['10.26.0.133','119.23.124.234']
+	hostip = ['10.26.0.133','11.23.12.23']
 	#hostip = ['10.26.0.133','120.76.47.18'] #test
-	user = 'letl'
+	user = 'xletl'
 	passwd = ['gstdata@2016','Gstdata@2016']
 	database = ['DbCenter','DbReport']
 	try:
