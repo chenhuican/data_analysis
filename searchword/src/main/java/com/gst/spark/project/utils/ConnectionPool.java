@@ -25,9 +25,9 @@ public class ConnectionPool {
                 connectionQueue = new LinkedList<Connection>();
                 for (int i = 0; i < 5; i++) {
                     Connection conn = DriverManager.getConnection(
-                            "jdbc:mysql://119.23.124.234:3306/DbReport?characterEncoding=utf8",
-                            "letl",
-                            "Gstdata@2016"
+                            "jdbc:mysql://192.168.1.234:3306/DbReport?characterEncoding=utf8",
+                            "xletl",
+                            "G05st016"
                     );
                     connectionQueue.push(conn);
                 }
