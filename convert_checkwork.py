@@ -11,6 +11,7 @@ import copy
 from openpyxl import load_workbook
 from openpyxl import Workbook
 from openpyxl.styles import Border, Side, Font, colors, Alignment
+import xlrd
 import threading
 import pandas as pd
 
@@ -39,6 +40,7 @@ class Convert_Excel():
 			for k in range(2, rownums+1):
 				ws_day = sheet.cell(row=k, column=4).value
 				self.dicday[ws_day] = []
+			
 			name_list = []
 			for rows in range(2, rownums+1):
 				#for col in parse_cols:
@@ -52,14 +54,14 @@ class Convert_Excel():
 					u"姓名":w_name,
 					u"上班打卡时间":w_uptime,
 					u"下班打卡时间":w_downtime,
-					u"工作时间": w_worktime}
+					u"工作时间":w_worktime}
 
 				self.dicday[w_day].append(dict_day)
 
 				# print(w_name,w_day,w_uptime,w_downtime,w_worktime)
 			self.listday.append(self.dicday)
 			self.listday.sort()
-			# 获取所有员工姓名
+			# 去重获取所有员工姓名
 			self.workname = set(name_list)
 			print(self.workname)
 
@@ -117,16 +119,22 @@ class Convert_Excel():
 
 	
 	def xls_to_xlsx(self, filename):
-		''' odl xls convert to xlsx'''
+		''' old xls convert to xlsx.
+		    避免报错：No CODEPAGE record, no encoding_override: will use 'ascii'
+		    采用先 xlrd 读取转换
+		'''
 		files = os.path.join(self.path, filename)
+		print 'files: {}'.format(files)
 		suffix = filename.split('.')[1]
-		file_name = filename.split('.')[0]
+		file_name = str(filename.split('.')[0])
 		if suffix=='xls':
-			df = pd.read_excel(files)
-			new_file = file_name+'.xlsx'
-			df.to_excel(new_file, index=False)
+			content = xlrd.open_workbook(filename=files, encoding_override='gbk')
+			df = pd.read_excel(content, engine='xlrd')
+			# df = pd.read_excel(files)
+			files = file_name+'.xlsx'
+			df.to_excel(files, index=False)
 
-		return new_file 
+		return files 
 
 	def get_info(self, days, work_name, kv, list_a):
 		values = ''
